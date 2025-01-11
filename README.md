@@ -30,22 +30,111 @@ output = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 648, 649, 650, 651, 652, 653]
 Problem Set 2 - A functioning web app with API
 
 # functioning_webapp 
-created virtual environment using python -m venv env
-activate the env from env/scripts/activate
+Documentation for Functioning Web Application
+
+Project Setup
+
+1. Create a Virtual Environment
+
+Create a virtual environment using the following command:
+python -m venv env
+
+Activate the virtual environment:
+Windows:
+env\Scripts\activate
+
+
+2. Install Django
+Install Django and other dependencies using:
 pip install django
-create project  using django-admin startproject web_app or python -m django startproject web_app
+
+3. Create a Django Project
+Create the project using one of the following commands:
+django-admin startproject web_app
+OR
+python -m django startproject web_app
+
+4. Navigate to the Project Directory
+Change directory to the project folder:
 cd web_app
-python manage.py startapp admin(only admin has the access to post the apps)
+
+5. Create Django Apps
+Create an app for admin functionality:
+python manage.py startapp admin
+
+Only the admin has the access to post the apps.
+Create an app for user functionality:
+
 python manage.py startapp user
-include the apps in settings.py(INSTALLED APPS) in project, apps url in project urls
-database models are written in models.py for admin and user in their repective apps
-logic in the views.py for the purpose of register, login, to add apps for admin
-logic in the views.py for the purpose of register, login, profile, points, task, for user
-created templates for the purpose of admin, app, home, index, login, points, profile, register and task code it written in each .html file according to requirement
-to check the data while developing i used get, delete functiionality for that purpose i used serializers from rest framework (pip install djangorestframework) included it INSTALLED APPS in settings.py
 
-freezed the requirements.txt(pip freeze > requirements.txt)
+6. Include Apps in Project Settings
 
+Add the created apps to the INSTALLED_APPS list in settings.py:
+INSTALLED_APPS = [
+    ...
+    'admin',
+    'user',
+    'rest_framework',  # For REST framework
+]
+
+7. Add URLs
+
+Include the app URLs in the project's urls.py file:
+from django.urls import include, path
+
+urlpatterns = [
+    path('admin/', include('admin.urls')),
+    path('', include('user.urls')),
+]
+
+Database Models
+
+Models for Admin and User are written in their respective models.py files within the admin and user apps.
+
+Views and Logic
+Admin App Views
+Logic in views.py includes functionalities for:
+Register
+Login
+Adding apps
+Getdata
+Deletedata
+
+User App Views
+Logic in views.py includes functionalities for:
+Register
+Login
+Profile
+Points
+Tasks
+
+Templates
+Created templates for the following purposes:
+Admin
+App
+Home
+Index
+Login
+Points
+Profile
+Register
+Task
+
+Code for each template is written in its respective .html file, tailored to the application’s requirements.
+
+Data Handling with REST Framework
+
+Installed Django REST framework:
+
+pip install djangorestframework
+
+Added rest_framework to INSTALLED_APPS in settings.py.
+
+Used serializers from the REST framework to handle GET and DELETE functionality during development.
+
+Requirements Freeze
+
+Freezed the dependencies into a requirements.txt file:
 
 Problem Set 3
 Please answer the below questions:
